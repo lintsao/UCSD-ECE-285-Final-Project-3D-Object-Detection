@@ -28,7 +28,6 @@ python eval_mAP.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path c
 python detection.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v4.pth
 ```
 
-
 # Complex YOLOv4
 
 [![python-image]][python-url]
