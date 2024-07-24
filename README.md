@@ -1,32 +1,62 @@
-# ECE-285-Final
+# ECE-285 Final Project
 
-### Usage: 
-#### Preprocessing
-##### Pretrained Model
-- Step 1. Download model from https://drive.google.com/file/d/1pyTkEUCtPrLWGHkDaviZNlM7U13eCmkg/view?usp=sharing
-- Step 2. Create "checkpoints" folder and move the pretrained model it
+Welcome to the ECE-285 Final Project repository. This guide will walk you through the steps to preprocess the data, train the model, evaluate the performance, and visualize the results using Complex YOLO - YOLO V4.
 
-##### Dataset
-- Step 1. Download dataset from https://drive.google.com/file/d/17NrrnO-Uw_foiGlPtXXr3IalQUhmZxGz/view?usp=sharing
-- Step 2. Download dataset from https://drive.google.com/file/d/1_WIldJYOrxmVVSjm0no10Llg8vi3VstE/view?usp=sharing
-- Step 3. Unzip the dataset and move it to the current root folder
+## Usage
 
-#### Training from pretrained weight - Complex Yolo - Yolo V4
-```python
+### Preprocessing
+
+#### Pretrained Model
+1. **Download the pretrained model**:
+   - [Download Model](https://drive.google.com/file/d/1pyTkEUCtPrLWGHkDaviZNlM7U13eCmkg/view?usp=sharing)
+2. **Setup the model**:
+   - Create a `checkpoints` folder:
+     ```sh
+     mkdir checkpoints
+     ```
+   - Move the downloaded pretrained model to the `checkpoints` folder.
+
+#### Dataset
+1. **Download the datasets**:
+   - [Dataset Part 1](https://drive.google.com/file/d/17NrrnO-Uw_foiGlPtXXr3IalQUhmZxGz/view?usp=sharing)
+   - [Dataset Part 2](https://drive.google.com/file/d/1_WIldJYOrxmVVSjm0no10Llg8vi3VstE/view?usp=sharing)
+2. **Unzip and organize the datasets**:
+   - Unzip the downloaded datasets.
+   - Move the unzipped datasets to the current root folder.
+
+### Training (Optional: from Pretrained Weights)
+
+To train the Complex YOLO - YOLO V4 model from the pretrained weights, use the following command:
+
+```sh
 python train.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v4.pth --save_path checkpoints/Complex_yolo_yolo_v4.pth
 ```
 
-#### Evaluation
+### Evaluation
+To evaluate the model and calculate the mean Average Precision (mAP), run:
 
-```python
+```sh
 python eval_mAP.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v4.pth
 ```
 
-#### Visualization
+### Visualization
+To visualize the detection results, use the following command:
 
-```python
+```sh
 python detection.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v4.pth
 ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Complex YOLOv4
 
