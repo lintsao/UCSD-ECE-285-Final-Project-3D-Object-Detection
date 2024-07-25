@@ -5,6 +5,10 @@ Welcome to the ECE-285 Final Project repository. This guide will walk you throug
 [![PyTorch](https://img.shields.io/badge/pytorch-v1.5.0%2B-red)](https://pytorch.org/)
 
 ---
+<div align="center">
+  <img src="./asset/pred_complex_yolo_v4.gif" alt="Demo" width="50%">
+</div>
+
 ## Features
 - [x] Realtime 3D object detection based on YOLOv4
 - [x] Support [distributed data parallel training](https://github.com/pytorch/examples/tree/master/distributed/ddp)
