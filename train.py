@@ -43,6 +43,7 @@ def main():
     
     model = Darknet(cfgfile=configs.model_def, use_giou_loss=configs.use_giou_loss)
     # model.print_network()
+    print(configs.device)
     model = model.to(configs.device)
     
     # Get data configuration
@@ -60,7 +61,7 @@ def main():
             # model.apply(weights_init_normal)
             # Data Parallel
             # model = make_data_parallel(model, configs)
-            model.load_state_dict(torch.load(configs.pretrained_path, map_location="cuda:0"))
+            model.load_state_dict(torch.load(configs.pretrained_path, map_location=configs.device))
             # model.load_state_dict(torch.load(configs.pretrained_path))
             print("Trained pytorch weight loaded!")
         else:

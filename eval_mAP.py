@@ -1,7 +1,4 @@
-# python eval_mAP.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v4.pth
-# python eval_mAP.py 
-
-# python eval_mAP.py --model_def config/cfg/complex_yolov4_tiny.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v4_tiny.pth
+# python eval_mAP.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/complex_yolo_yolo_v4.pth
 
 import os, sys, time, datetime, argparse
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
@@ -51,14 +48,9 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-a", "--arch", type=str, default="darknet", metavar="ARCH", help="The name of the model architecture")
-        
-    # parser.add_argument("--model_def", type=str, default="config/cfg/complex_yolov4_tiny.cfg", metavar="PATH",help="path to model definition file")
-    # parser.add_argument("--pretrained_path", type=str, default="checkpoints/Complex_yolo_yolo_v4_tiny.pth", metavar="PATH", help="path to weights file")
-    # parser.add_argument("--save_path", type=str, default="checkpoints/Complex_yolo_yolo_v4_tiny.pth", metavar="PATH", help="path to weights file")
-    
     parser.add_argument("--model_def", type=str, default="config/cfg/complex_yolov4.cfg", metavar="PATH",help="path to model definition file")
-    parser.add_argument("--pretrained_path", type=str, default="checkpoints/Complex_yolo_yolo_v4.pth", metavar="PATH", help="path to weights file")
-    parser.add_argument("--save_path", type=str, default="checkpoints/Complex_yolo_yolo_v4.pth", metavar="PATH", help="path to weights file")
+    parser.add_argument("--pretrained_path", type=str, default="checkpoints/complex_yolo_yolo_v4.pth", metavar="PATH", help="path to weights file")
+    parser.add_argument("--save_path", type=str, default="checkpoints/cmplex_yolo_yolo_v4.pth", metavar="PATH", help="path to weights file")
     
     parser.add_argument("--class_path", type=str, default="dataset/kitti/classes_names.txt", metavar="PATH", help="path to class label file")
     parser.add_argument("--batch_size"  , type=int  , default=4, help="size of each image batch")
@@ -85,22 +77,20 @@ def main():
     # Get data configuration
     classes = load_classes(configs.class_path)
     
-    # model.print_network()
+    model.print_network()
     print("\n" + "___m__@@__m___" * 10 + "\n")
     
-    print(configs.pretrained_path)    
+    print("Evaluation config:")
+    print(configs.pretrained_path)
     assert os.path.isfile(configs.pretrained_path), "No file at {}".format(configs.pretrained_path)
     
-    model = model.to(device = configs.device)
+    model = model.to(device=configs.device)
     
     # Load checkpoint weights
     if configs.pretrained_path:
         if configs.pretrained_path.endswith(".pth"):
-            model.load_state_dict(torch.load(configs.pretrained_path))
-            # model.load_state_dict(torch.load(configs.pretrained_path,map_location='cuda:0'))
+            model.load_state_dict(torch.load(configs.pretrained_path, map_location=configs.device))
             print("Trained pytorch weight loaded!")
-            
-    # torch.save(model.state_dict(), configs.save_path)
         
     # Data Parallel
     model = make_data_parallel(model, configs)

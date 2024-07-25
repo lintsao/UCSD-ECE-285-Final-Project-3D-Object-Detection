@@ -22,7 +22,7 @@ def parse_train_configs():
     
     parser.add_argument('-a', '--arch', type=str, default='darknet', metavar='ARCH', help='The name of the model architecture')
     parser.add_argument('--model_def', type=str, default='config/cfg/complex_yolov4.cfg', metavar='PATH', help='The path for cfgfile (only for darknet)')
-    parser.add_argument('--pretrained_path', type=str, default="checkpoints/complex_yolov4_mse_loss.pth", metavar='PATH', help='the path of the pretrained checkpoint')
+    parser.add_argument('--pretrained_path', type=str, default="checkpoints/complex_yolo_yolo_v4.pth", metavar='PATH', help='the path of the pretrained checkpoint')
     # parser.add_argument('--pretrained_path', type=str, default="checkpoints/Model_complexer_yolo_V4.pth", metavar='PATH', help='the path of the pretrained checkpoint')
     parser.add_argument('--save_path', type=str, default="checkpoints/Model_complexer_yolo_V4.pth", metavar='PATH', help='the path of the save checkpoint')
     parser.add_argument('--use_giou_loss', action='store_true', help='If true, use GIoU loss during training. If false, use MSE loss for training')

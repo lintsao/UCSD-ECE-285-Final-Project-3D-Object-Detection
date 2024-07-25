@@ -1,4 +1,4 @@
-# python detection.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v4.pth
+# python detection.py --model_def config/cfg/complex_yolov4.cfg --pretrained_path checkpoints/complex_yolo_yolo_v4.pth
 # python detection.py --model_def config/cfg/complex_yolov4_tiny.cfg.cfg --pretrained_path checkpoints/Complex_yolo_yolo_v3_tiny.pth --batch_size 8  
 import os, sys, time, datetime, argparse
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
@@ -42,7 +42,7 @@ def main():
 
     configs = parser.parse_args()
     
-    configs.pin_memory = True
+    configs.pin_memory = True # Setting pin_memory=True can significantly improve the speed of data transfer from CPU to GPU, especially when using high-performance GPUs for deep learning training. This configuration leverages pinned memory to make data transfer more efficient, reducing bottlenecks in data loading and transfer, thereby enhancing overall training efficiency.
 
     configs.dataset_dir = os.path.join("dataset", "kitti")
 

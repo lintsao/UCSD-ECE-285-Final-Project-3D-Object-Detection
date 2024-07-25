@@ -60,7 +60,7 @@ def make_data_parallel(model, configs):
         model = model.cuda(configs.gpu_idx)
     else:
         # DataParallel will divide and allocate batch_size to all available GPUs
-        model = torch.nn.DataParallel(model).cuda()
+        model = torch.nn.DataParallel(model).to(configs.device)
 
     return model
 
